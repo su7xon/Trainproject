@@ -15,7 +15,7 @@ const Header: React.FC = () => {
               <Train className="h-6 w-6 text-white" />
             </div>
             <div>
-              <span className="text-xl font-bold text-gray-900">RAILSAFE</span>
+              <span className="text-xl font-bold text-gray-900">RAILSURAKSHA</span>
               <span className="text-xl font-bold text-red-500"> ASSISTANT</span>
             </div>
           </Link>

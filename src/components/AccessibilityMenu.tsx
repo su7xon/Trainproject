@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Settings, Eye, Volume2, Type, Contrast, MousePointer, X } from 'lucide-react';
+import { Settings, Eye, Volume2, Type, Contrast, MousePointer, X, Moon, Sun } from 'lucide-react';
 
 const AccessibilityMenu: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -9,7 +9,8 @@ const AccessibilityMenu: React.FC = () => {
     voiceOver: false,
     reducedMotion: false,
     highContrast: false,
-    largeText: false
+    largeText: false,
+    darkMode: false
   });
 
   useEffect(() => {
@@ -28,6 +29,12 @@ const AccessibilityMenu: React.FC = () => {
       root.classList.add('high-contrast');
     } else {
       root.classList.remove('high-contrast');
+    }
+
+    if (settings.darkMode) {
+      root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
     }
 
     if (settings.reducedMotion) {
@@ -55,21 +62,21 @@ const AccessibilityMenu: React.FC = () => {
       {/* Accessibility Menu */}
       {isOpen && (
         <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center p-4">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl shadow-2xl p-6 max-w-md w-full max-h-[80vh] overflow-y-auto">
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-xl font-bold text-gray-900">Accessibility Settings</h2>
+              <h2 className="text-xl font-bold text-gray-900 dark:text-white">Accessibility Settings</h2>
               <button
                 onClick={() => setIsOpen(false)}
-                className="p-2 hover:bg-gray-100 rounded-lg transition-colors"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-lg transition-colors"
               >
-                <X className="h-5 w-5" />
+                <X className="h-5 w-5 text-gray-600 dark:text-gray-300" />
               </button>
             </div>
 
             <div className="space-y-6">
               {/* Font Size */}
               <div>
-                <label className="block text-sm font-medium text-gray-700 mb-3">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
                   <Type className="h-4 w-4 inline mr-2" />
                   Font Size
                 </label>
@@ -80,8 +87,8 @@ const AccessibilityMenu: React.FC = () => {
                       onClick={() => updateSetting('fontSize', size)}
                       className={`p-2 border rounded-lg text-sm transition-colors ${
                         settings.fontSize === size
-                          ? 'border-blue-500 bg-blue-50 text-blue-700'
-                          : 'border-gray-300 hover:border-gray-400'
+                          ? 'border-blue-500 bg-blue-50 text-blue-700 dark:bg-blue-900 dark:text-blue-300'
+                          : 'border-gray-300 dark:border-gray-600 hover:border-gray-400 dark:hover:border-gray-500'
                       }`}
                     >
                       {size === 'normal' ? 'Normal' : size === 'large' ? 'Large' : 'X-Large'}
@@ -90,10 +97,32 @@ const AccessibilityMenu: React.FC = () => {
                 </div>
               </div>
 
+              {/* Dark Mode */}
+              <div>
+                <label className="flex items-center justify-between">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+                    {settings.darkMode ? <Moon className="h-4 w-4 inline mr-2" /> : <Sun className="h-4 w-4 inline mr-2" />}
+                    Dark Mode
+                  </span>
+                  <button
+                    onClick={() => updateSetting('darkMode', !settings.darkMode)}
+                    className={`relative inline-flex h-6 w-11 items-center rounded-full transition-colors ${
+                      settings.darkMode ? 'bg-blue-600' : 'bg-gray-200'
+                    }`}
+                  >
+                    <span
+                      className={`inline-block h-4 w-4 transform rounded-full bg-white transition-transform ${
+                        settings.darkMode ? 'translate-x-6' : 'translate-x-1'
+                      }`}
+                    />
+                  </button>
+                </label>
+              </div>
+
               {/* High Contrast */}
               <div>
                 <label className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-gray-700">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     <Contrast className="h-4 w-4 inline mr-2" />
                     High Contrast
                   </span>
@@ -115,7 +144,7 @@ const AccessibilityMenu: React.FC = () => {
               {/* Reduced Motion */}
               <div>
                 <label className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-gray-700">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     <MousePointer className="h-4 w-4 inline mr-2" />
                     Reduce Motion
                   </span>
@@ -137,7 +166,7 @@ const AccessibilityMenu: React.FC = () => {
               {/* Voice Over */}
               <div>
                 <label className="flex items-center justify-between">
-                  <span className="text-sm font-medium text-gray-700">
+                  <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
                     <Volume2 className="h-4 w-4 inline mr-2" />
                     Voice Announcements
                   </span>
@@ -164,9 +193,10 @@ const AccessibilityMenu: React.FC = () => {
                   voiceOver: false,
                   reducedMotion: false,
                   highContrast: false,
-                  largeText: false
+                  largeText: false,
+                  darkMode: false
                 })}
-                className="w-full p-3 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors"
+                className="w-full p-3 bg-gray-100 dark:bg-gray-700 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-600 transition-colors"
               >
                 Reset to Default
               </button>

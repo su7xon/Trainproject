@@ -14,7 +14,8 @@ import {
   Sofa,
   Train,
   Gift,
-  Building
+  Building,
+  ChefHat
 } from 'lucide-react';
 
 const QuickActions: React.FC = () => {
@@ -132,12 +133,20 @@ const QuickActions: React.FC = () => {
       hoverColor: 'hover:bg-cyan-600'
     },
     {
+      title: 'Food to Seat',
+      description: 'Order food delivery to your seat',
+      icon: ChefHat,
+      path: '/food-to-seat',
+      color: 'bg-emerald-500',
+      hoverColor: 'hover:bg-emerald-600'
+    },
+    {
       title: 'Offers',
       description: 'Special discounts and travel deals',
       icon: Gift,
       path: '/offers',
-      color: 'bg-emerald-500',
-      hoverColor: 'hover:bg-emerald-600'
+      color: 'bg-violet-500',
+      hoverColor: 'hover:bg-violet-600'
     }
   ];
 
@@ -155,8 +164,7 @@ const QuickActions: React.FC = () => {
             <Link
               key={index}
               to={action.path}
-              className={`p-4 ${action.color} ${action.hoverColor} text-white rounded-xl transition-all transform hover:scale-105 hover:shadow-lg group animate-fade-in-up`}
-              style={{ animationDelay: `${index * 0.1}s` }}
+              className={`p-4 ${action.color} ${action.hoverColor} text-white rounded-xl transition-all transform hover:scale-105 hover:shadow-lg group`}
             >
               <div className="flex flex-col items-center text-center">
                 <div className="p-3 bg-white bg-opacity-20 rounded-full mb-3 group-hover:bg-opacity-30 transition-all">

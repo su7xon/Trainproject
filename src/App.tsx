@@ -14,6 +14,11 @@ import SeatReview from './pages/SeatReview';
 import CoachTracker from './pages/CoachTracker';
 import Offers from './pages/Offers';
 import HotelBooking from './pages/HotelBooking';
+import FoodToSeat from './pages/FoodToSeat';
+import LiveTracking from './pages/LiveTracking';
+import ReviewsRatings from './pages/ReviewsRatings';
+import RefundStatus from './pages/RefundStatus';
+import EmergencyContacts from './pages/EmergencyContacts';
 import EmergencyPanic from './components/EmergencyPanic';
 
 function App() {
@@ -35,11 +40,11 @@ function App() {
           <Route path="/coach-tracker" element={<CoachTracker />} />
           <Route path="/offers" element={<Offers />} />
           <Route path="/hotel-booking" element={<HotelBooking />} />
-          {/* Placeholder routes for other features */}
-          <Route path="/tracking" element={<div className="p-8 text-center">Live Tracking - Coming Soon</div>} />
-          <Route path="/reviews" element={<div className="p-8 text-center">Reviews & Ratings - Coming Soon</div>} />
-          <Route path="/refund" element={<div className="p-8 text-center">Refund Status - Coming Soon</div>} />
-          <Route path="/emergency" element={<div className="p-8 text-center">Emergency Contacts - Coming Soon</div>} />
+          <Route path="/food-to-seat" element={<FoodToSeat />} />
+          <Route path="/tracking" element={<LiveTracking />} />
+          <Route path="/reviews" element={<ReviewsRatings />} />
+          <Route path="/refund" element={<RefundStatus />} />
+          <Route path="/emergency" element={<EmergencyContacts />} />
         </Routes>
         <EmergencyPanic />
       </div>

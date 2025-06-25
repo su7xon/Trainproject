@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Header from '../components/Header';
-import { Sofa, Star, Camera, ThumbsUp, ThumbsDown, Droplets, Wind } from 'lucide-react';
+import { Sofa, Star, Camera, ThumbsUp, ThumbsDown, Droplets, Wind, Upload, CheckCircle } from 'lucide-react';
 
 const SeatReview: React.FC = () => {
   const [ratings, setRatings] = useState({
@@ -12,6 +12,8 @@ const SeatReview: React.FC = () => {
   const [coachNumber, setCoachNumber] = useState('');
   const [seatNumber, setSeatNumber] = useState('');
   const [review, setReview] = useState('');
+  const [uploadedPhotos, setUploadedPhotos] = useState<string[]>([]);
+  const [showSuccess, setShowSuccess] = useState(false);
 
   const ratingCategories = [
     { key: 'cleanliness', label: 'Cleanliness', icon: Droplets },
@@ -24,11 +26,69 @@ const SeatReview: React.FC = () => {
     setRatings(prev => ({ ...prev, [category]: rating }));
   };
 
+  const handlePhotoUpload = (type: string) => {
+    // Simulate photo upload
+    const newPhoto = `${type}_photo_${Date.now()}.jpg`;
+    setUploadedPhotos(prev => [...prev, newPhoto]);
+  };
+
   const handleSubmit = () => {
     if (coachNumber && seatNumber && ratings.overall > 0) {
-      alert('Seat review submitted successfully! Thank you for your feedback.');
+      setShowSuccess(true);
+      setTimeout(() => {
+        setShowSuccess(false);
+        // Reset form
+        setRatings({ cleanliness: 0, comfort: 0, space: 0, overall: 0 });
+        setCoachNumber('');
+        setSeatNumber('');
+        setReview('');
+        setUploadedPhotos([]);
+      }, 3000);
     }
   };
+
+  if (showSuccess) {
+    return (
+      <div className="min-h-screen bg-gray-50">
+        <Header />
+        <div className="max-w-2xl mx-auto px-4 py-16 text-center">
+          <div className="bg-white rounded-2xl shadow-lg p-8">
+            <div className="p-4 bg-green-100 rounded-full w-16 h-16 mx-auto mb-6">
+              <CheckCircle className="h-8 w-8 text-green-600" />
+            </div>
+            <h1 className="text-2xl font-bold text-gray-900 mb-4">Review Submitted Successfully!</h1>
+            <p className="text-gray-600 mb-6">Thank you for your feedback. Your review helps other passengers make better choices.</p>
+            <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mb-6">
+              <div className="text-left space-y-2">
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Coach:</span>
+                  <span className="font-bold text-blue-600">{coachNumber}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Seat:</span>
+                  <span className="font-medium">{seatNumber}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-gray-600">Overall Rating:</span>
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className={`h-4 w-4 ${i < ratings.overall ? 'text-yellow-500 fill-current' : 'text-gray-300'}`} />
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <button 
+              onClick={() => setShowSuccess(false)}
+              className="bg-teal-500 text-white px-6 py-3 rounded-lg hover:bg-teal-600 transition-colors"
+            >
+              Submit Another Review
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-gray-50">
@@ -105,15 +165,32 @@ const SeatReview: React.FC = () => {
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">Add Photos</label>
               <div className="grid grid-cols-2 gap-3">
-                <button className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors">
+                <button 
+                  onClick={() => handlePhotoUpload('seat')}
+                  className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+                >
                   <Camera className="h-6 w-6 text-gray-400 mx-auto mb-2" />
                   <span className="text-sm text-gray-600">Seat Photo</span>
                 </button>
-                <button className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors">
-                  <Camera className="h-6 w-6 text-gray-400 mx-auto mb-2" />
+                <button 
+                  onClick={() => handlePhotoUpload('interior')}
+                  className="p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-gray-400 transition-colors"
+                >
+                  <Upload className="h-6 w-6 text-gray-400 mx-auto mb-2" />
                   <span className="text-sm text-gray-600">Interior Photo</span>
                 </button>
               </div>
+              
+              {uploadedPhotos.length > 0 && (
+                <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
+                  <p className="text-sm text-green-700 font-medium">Photos uploaded successfully!</p>
+                  <div className="text-xs text-green-600 mt-1">
+                    {uploadedPhotos.map((photo, index) => (
+                      <div key={index}>✓ {photo}</div>
+                    ))}
+                  </div>
+                </div>
+              )}
             </div>
 
             <button
