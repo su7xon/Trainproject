@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Header from '../components/Header';
 import TrainBooking from '../components/TrainBooking';
 import QuickActions from '../components/QuickActions';
-import Train3D from '../components/Train3D';
 import ParallaxSection from '../components/ParallaxSection';
 import AccessibilityMenu from '../components/AccessibilityMenu';
 import { Train, Shield, Users, Clock, Star, TrendingUp } from 'lucide-react';
@@ -31,20 +30,16 @@ const HomePage: React.FC = () => {
       <Header />
       <AccessibilityMenu />
       
-      {/* Hero Section with Parallax */}
-      <ParallaxSection 
-        speed={0.5}
-        backgroundImage="https://images.pexels.com/photos/129731/pexels-photo-129731.jpeg"
-        className="relative overflow-hidden"
-      >
+      {/* Hero Section */}
+      <div className="relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-black/20 to-white/80"></div>
         
         <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="text-center mb-12 animate-fade-in">
+          <div className="text-center mb-12">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-4">
               Safe <span className="text-red-500">Railway</span> Travel
             </h1>
-            <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto animate-slide-in-up" style={{ animationDelay: '0.2s' }}>
+            <p className="text-xl text-gray-700 mb-8 max-w-3xl mx-auto">
               AI-powered safety system with instant panic response, live tracking, 
               and comprehensive complaint management for Indian Railways
             </p>
@@ -54,7 +49,7 @@ const HomePage: React.FC = () => {
               {stats.map((stat, index) => {
                 const IconComponent = stat.icon;
                 return (
-                  <div key={index} className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg animate-fade-in-up" style={{ animationDelay: `${index * 0.1}s` }}>
+                  <div key={index} className="bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg">
                     <IconComponent className={`h-8 w-8 ${stat.color} mx-auto mb-2`} />
                     <div className="text-2xl font-bold text-gray-900">{stat.value}</div>
                     <div className="text-sm text-gray-600">{stat.label}</div>
@@ -75,32 +70,18 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </div>
-      </ParallaxSection>
+      </div>
 
-      {/* 3D Train Section */}
-      <ParallaxSection speed={0.3} className="py-16 bg-white">
+      {/* Safety Features Section */}
+      <div className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Experience Modern Railway Technology</h2>
-            <p className="text-lg text-gray-600">Interactive 3D visualization of Indian Railways</p>
-          </div>
-          
-          <div className="flex justify-center">
-            <Train3D />
-          </div>
-        </div>
-      </ParallaxSection>
-
-      {/* Safety Features Section with Parallax */}
-      <ParallaxSection speed={0.4} className="py-16 bg-gradient-to-r from-blue-50 to-purple-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12 animate-fade-in">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Advanced Safety Features</h2>
             <p className="text-lg text-gray-600">Protecting passengers with AI-powered technology</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg animate-fade-in-up">
+            <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
               <div className="p-4 bg-red-100 rounded-full w-16 h-16 mx-auto mb-4">
                 <Shield className="h-8 w-8 text-red-500" />
               </div>
@@ -108,7 +89,7 @@ const HomePage: React.FC = () => {
               <p className="text-gray-600">One-tap emergency alert with live location sharing to Railway Police and family</p>
             </div>
 
-            <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
               <div className="p-4 bg-blue-100 rounded-full w-16 h-16 mx-auto mb-4">
                 <TrendingUp className="h-8 w-8 text-blue-500" />
               </div>
@@ -116,7 +97,7 @@ const HomePage: React.FC = () => {
               <p className="text-gray-600">Say "Help" or "Bachao" to activate emergency mode even when phone is in pocket</p>
             </div>
 
-            <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <div className="text-center p-6 bg-white/80 backdrop-blur-sm rounded-2xl shadow-lg">
               <div className="p-4 bg-green-100 rounded-full w-16 h-16 mx-auto mb-4">
                 <Users className="h-8 w-8 text-green-500" />
               </div>
@@ -125,10 +106,10 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </div>
-      </ParallaxSection>
+      </div>
 
-      {/* Testimonials Section with Parallax */}
-      <ParallaxSection speed={0.2} className="py-16 bg-white">
+      {/* Testimonials Section */}
+      <div className="py-16 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">What Passengers Say</h2>
@@ -136,7 +117,7 @@ const HomePage: React.FC = () => {
           </div>
 
           <div className="grid md:grid-cols-3 gap-8">
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 animate-fade-in-up">
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
               <div className="flex items-center mb-4">
                 <div className="flex text-yellow-500">
                   {[...Array(5)].map((_, i) => (
@@ -148,7 +129,7 @@ const HomePage: React.FC = () => {
               <div className="font-semibold text-gray-900">- Priya Sharma, Mumbai</div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 animate-fade-in-up" style={{ animationDelay: '0.1s' }}>
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
               <div className="flex items-center mb-4">
                 <div className="flex text-yellow-500">
                   {[...Array(5)].map((_, i) => (
@@ -160,7 +141,7 @@ const HomePage: React.FC = () => {
               <div className="font-semibold text-gray-900">- Rajesh Kumar, Delhi</div>
             </div>
 
-            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100 animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
+            <div className="bg-white p-6 rounded-2xl shadow-lg border border-gray-100">
               <div className="flex items-center mb-4">
                 <div className="flex text-yellow-500">
                   {[...Array(5)].map((_, i) => (
@@ -173,7 +154,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
         </div>
-      </ParallaxSection>
+      </div>
     </div>
   );
 };
