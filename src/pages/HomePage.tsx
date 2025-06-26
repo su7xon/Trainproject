@@ -59,15 +59,14 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Main Booking Section */}
-          <div className="grid lg:grid-cols-3 gap-8">
-            <div className="lg:col-span-2">
-              <TrainBooking onSearch={handleTrainSearch} onTrainSelect={handleTrainSelect} />
-            </div>
+          {/* Train Booking Section */}
+          <div className="mb-12">
+            <TrainBooking onSearch={handleTrainSearch} onTrainSelect={handleTrainSelect} />
+          </div>
 
-            <div>
-              <QuickActions />
-            </div>
+          {/* Quick Actions Section - Now positioned below train booking */}
+          <div className="mb-12">
+            <QuickActions />
           </div>
         </div>
       </div>

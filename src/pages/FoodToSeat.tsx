@@ -12,7 +12,9 @@ const FoodToSeat: React.FC = () => {
     { id: 'meals', name: 'Meals', icon: ChefHat },
     { id: 'snacks', name: 'Snacks', icon: '🍿' },
     { id: 'beverages', name: 'Beverages', icon: '☕' },
-    { id: 'desserts', name: 'Desserts', icon: '🍰' }
+    { id: 'desserts', name: 'Desserts', icon: '🍰' },
+    { id: 'breakfast', name: 'Breakfast', icon: '🥞' },
+    { id: 'regional', name: 'Regional', icon: '🍛' }
   ];
 
   const foodItems = {
@@ -22,7 +24,7 @@ const FoodToSeat: React.FC = () => {
         name: 'Veg Thali',
         price: 120,
         image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg',
-        description: 'Dal, Rice, Roti, Sabzi, Pickle',
+        description: 'Dal, Rice, Roti, Sabzi, Pickle, Papad',
         rating: 4.2,
         time: '25-30 min',
         vendor: 'Railway Catering'
@@ -46,11 +48,31 @@ const FoodToSeat: React.FC = () => {
         rating: 4.3,
         time: '20-25 min',
         vendor: 'North Indian Kitchen'
+      },
+      {
+        id: 4,
+        name: 'Fish Curry Rice',
+        price: 160,
+        image: 'https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg',
+        description: 'Bengali style fish curry with steamed rice',
+        rating: 4.4,
+        time: '25-30 min',
+        vendor: 'Bengali Delights'
+      },
+      {
+        id: 5,
+        name: 'Mutton Curry',
+        price: 220,
+        image: 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg',
+        description: 'Spicy mutton curry with rice or roti',
+        rating: 4.6,
+        time: '35-40 min',
+        vendor: 'Mughlai Kitchen'
       }
     ],
     snacks: [
       {
-        id: 4,
+        id: 6,
         name: 'Samosa (2 pcs)',
         price: 30,
         image: 'https://images.pexels.com/photos/14477/pexels-photo-14477.jpeg',
@@ -60,48 +82,212 @@ const FoodToSeat: React.FC = () => {
         vendor: 'Station Snacks'
       },
       {
-        id: 5,
-        name: 'Sandwich',
+        id: 7,
+        name: 'Veg Sandwich',
         price: 50,
         image: 'https://images.pexels.com/photos/1603901/pexels-photo-1603901.jpeg',
-        description: 'Grilled veg/chicken sandwich',
+        description: 'Grilled vegetable sandwich with chutney',
         rating: 3.8,
         time: '15-20 min',
         vendor: 'Quick Bites'
+      },
+      {
+        id: 8,
+        name: 'Pav Bhaji',
+        price: 70,
+        image: 'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',
+        description: 'Mumbai style pav bhaji with butter',
+        rating: 4.3,
+        time: '20-25 min',
+        vendor: 'Mumbai Express'
+      },
+      {
+        id: 9,
+        name: 'Aloo Tikki Burger',
+        price: 60,
+        image: 'https://images.pexels.com/photos/1639562/pexels-photo-1639562.jpeg',
+        description: 'Crispy potato patty burger with sauces',
+        rating: 4.1,
+        time: '15-20 min',
+        vendor: 'Burger Junction'
+      },
+      {
+        id: 10,
+        name: 'Chole Bhature',
+        price: 80,
+        image: 'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',
+        description: 'Spicy chickpeas with fried bread',
+        rating: 4.4,
+        time: '20-25 min',
+        vendor: 'Punjabi Dhaba'
       }
     ],
     beverages: [
       {
-        id: 6,
+        id: 11,
         name: 'Masala Chai',
         price: 15,
         image: 'https://images.pexels.com/photos/1638280/pexels-photo-1638280.jpeg',
-        description: 'Hot spiced tea',
+        description: 'Hot spiced tea with milk',
         rating: 4.1,
         time: '5-10 min',
         vendor: 'Chai Point'
       },
       {
-        id: 7,
+        id: 12,
         name: 'Cold Coffee',
         price: 40,
         image: 'https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg',
-        description: 'Refreshing iced coffee',
+        description: 'Refreshing iced coffee with cream',
         rating: 4.0,
         time: '5-10 min',
         vendor: 'Coffee Corner'
+      },
+      {
+        id: 13,
+        name: 'Fresh Lime Soda',
+        price: 25,
+        image: 'https://images.pexels.com/photos/96974/pexels-photo-96974.jpeg',
+        description: 'Fresh lime with soda and mint',
+        rating: 4.2,
+        time: '5-10 min',
+        vendor: 'Fresh Drinks'
+      },
+      {
+        id: 14,
+        name: 'Mango Lassi',
+        price: 35,
+        image: 'https://images.pexels.com/photos/1092730/pexels-photo-1092730.jpeg',
+        description: 'Creamy mango yogurt drink',
+        rating: 4.3,
+        time: '5-10 min',
+        vendor: 'Dairy Delights'
+      },
+      {
+        id: 15,
+        name: 'Mineral Water',
+        price: 20,
+        image: 'https://images.pexels.com/photos/416528/pexels-photo-416528.jpeg',
+        description: 'Sealed mineral water bottle 1L',
+        rating: 4.5,
+        time: '2-5 min',
+        vendor: 'Aqua Fresh'
       }
     ],
     desserts: [
       {
-        id: 8,
-        name: 'Gulab Jamun',
+        id: 16,
+        name: 'Gulab Jamun (2 pcs)',
         price: 25,
         image: 'https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg',
         description: 'Sweet milk dumplings in syrup',
         rating: 4.4,
         time: '5-10 min',
         vendor: 'Sweet Treats'
+      },
+      {
+        id: 17,
+        name: 'Rasgulla (3 pcs)',
+        price: 30,
+        image: 'https://images.pexels.com/photos/1099680/pexels-photo-1099680.jpeg',
+        description: 'Soft cottage cheese balls in syrup',
+        rating: 4.2,
+        time: '5-10 min',
+        vendor: 'Bengali Sweets'
+      },
+      {
+        id: 18,
+        name: 'Ice Cream Cup',
+        price: 40,
+        image: 'https://images.pexels.com/photos/1362534/pexels-photo-1362534.jpeg',
+        description: 'Vanilla/Chocolate ice cream cup',
+        rating: 4.0,
+        time: '2-5 min',
+        vendor: 'Cool Treats'
+      }
+    ],
+    breakfast: [
+      {
+        id: 19,
+        name: 'Poha',
+        price: 40,
+        image: 'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',
+        description: 'Flattened rice with vegetables and spices',
+        rating: 4.1,
+        time: '15-20 min',
+        vendor: 'Morning Bites'
+      },
+      {
+        id: 20,
+        name: 'Upma',
+        price: 35,
+        image: 'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',
+        description: 'Semolina breakfast with vegetables',
+        rating: 3.9,
+        time: '15-20 min',
+        vendor: 'South Indian Corner'
+      },
+      {
+        id: 21,
+        name: 'Paratha with Curd',
+        price: 60,
+        image: 'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',
+        description: 'Stuffed paratha with fresh curd',
+        rating: 4.3,
+        time: '20-25 min',
+        vendor: 'Punjabi Kitchen'
+      },
+      {
+        id: 22,
+        name: 'Idli Sambhar (4 pcs)',
+        price: 50,
+        image: 'https://images.pexels.com/photos/5560763/pexels-photo-5560763.jpeg',
+        description: 'Steamed rice cakes with sambhar',
+        rating: 4.2,
+        time: '15-20 min',
+        vendor: 'South Express'
+      }
+    ],
+    regional: [
+      {
+        id: 23,
+        name: 'Rajasthani Dal Baati',
+        price: 90,
+        image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg',
+        description: 'Traditional Rajasthani dal with baati',
+        rating: 4.5,
+        time: '25-30 min',
+        vendor: 'Rajasthani Rasoi'
+      },
+      {
+        id: 24,
+        name: 'Gujarati Thali',
+        price: 110,
+        image: 'https://images.pexels.com/photos/1640777/pexels-photo-1640777.jpeg',
+        description: 'Complete Gujarati meal with sweets',
+        rating: 4.4,
+        time: '25-30 min',
+        vendor: 'Gujarat Kitchen'
+      },
+      {
+        id: 25,
+        name: 'Hyderabadi Biryani',
+        price: 200,
+        image: 'https://images.pexels.com/photos/2474661/pexels-photo-2474661.jpeg',
+        description: 'Authentic Hyderabadi dum biryani',
+        rating: 4.7,
+        time: '35-40 min',
+        vendor: 'Nizami Kitchen'
+      },
+      {
+        id: 26,
+        name: 'Kerala Fish Curry',
+        price: 170,
+        image: 'https://images.pexels.com/photos/725991/pexels-photo-725991.jpeg',
+        description: 'Coconut based fish curry with rice',
+        rating: 4.6,
+        time: '30-35 min',
+        vendor: 'Kerala Spice'
       }
     ]
   };
@@ -164,7 +350,7 @@ const FoodToSeat: React.FC = () => {
             {/* Categories */}
             <div className="bg-white rounded-2xl shadow-lg p-6 mb-6">
               <h2 className="text-xl font-bold text-gray-900 mb-4">Categories</h2>
-              <div className="grid grid-cols-4 gap-4">
+              <div className="grid grid-cols-3 md:grid-cols-6 gap-4">
                 {categories.map((category) => (
                   <button
                     key={category.id}
